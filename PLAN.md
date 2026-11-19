@@ -103,7 +103,7 @@ Code session, `/mcp` lists `edgar` and "What was Apple's FY revenue in its last
 ## Phase 7: Evals & docs
 - [ ] `evals/questions.yaml`: 10–15 hand-verified questions (normal case, odd fiscal year, restatement, Q4 derivation, a permission denial)
 - [ ] `evals/run_evals.py`: runs each through the MCP tools (agent removed), scores exact/within-tolerance, prints a table
-- [ ] README: architecture diagram (Mermaid), tool list, permission model, table of validation checks, setup steps, demo GIF placeholder
+- [x] README: architecture diagram (Mermaid), tool list, permission model, table of validation checks, setup steps, demo GIF placeholder
 
 **Acceptance:** evals ≥ 90% pass; README lets a stranger run it in under 10 minutes.
 
