@@ -1,0 +1,55 @@
+[project]
+name = "edgar-mcp"
+version = "0.1.0"
+description = "MCP server for SEC EDGAR filings with provenance, data-quality and validation"
+readme = "README.md"
+authors = [
+    { name = "ccleader477", email = "leadercolinc@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.20,<2",
+    "pydantic>=2.14.3",
+    "pyyaml>=6.0.3",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.8,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "pytest-asyncio>=1.5.0",
+    "respx>=0.23.1",
+    "ruff>=0.17.5",
+    "types-pyyaml>=6.0.12.20261113",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["respx.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.uv]
+# Windows Smart App Control blocks mypy's mypyc-compiled DLLs; build it as pure Python.
+no-binary-package = ["mypy"]

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "edgar": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["-m", "uv", "run", "--quiet", "python", "-m", "edgar_mcp.server"],
+      "env": { "EDGAR_MCP_ROLE": "analyst" }
+    }
+  }
+}

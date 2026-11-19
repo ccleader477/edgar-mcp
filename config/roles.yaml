@@ -1,0 +1,30 @@
+# Roles, allowlists and per-call caps for the EDGAR MCP server.
+# The active role comes from the EDGAR_MCP_ROLE env var (default: analyst).
+
+roles:
+  analyst:
+    description: Full research access, including filing text.
+    tools:
+      - search_filings
+      - get_financial_facts
+      - get_filing_section
+      - validate_financials
+      - read_filing_document   # the edgar://{cik}/{accession} resource
+  viewer:
+    description: Numbers and validation only; no filing text or filing search.
+    tools:
+      - get_financial_facts
+      - validate_financials
+
+allowlists:
+  # Use ["*"] to allow any SEC-registered ticker.
+  tickers:
+    [AAPL, MSFT, GOOGL, GOOG, AMZN, META, NVDA, TSLA, NFLX, ORCL, CRM, ADBE, INTC, AMD,
+     IBM, CSCO, JPM, BAC, WMT, COST, HD, KO, PEP, PG, JNJ, UNH, XOM, CVX, DIS, NKE, CELH]
+  form_types: [10-K, 10-K/A, 10-Q, 10-Q/A, 8-K, 8-K/A, 20-F, 40-F, DEF 14A]
+
+limits:
+  max_filings: 50          # search_filings results per call
+  max_metrics: 15          # metrics per get_financial_facts call
+  max_fiscal_years: 10     # fiscal years per get_financial_facts call
+  max_section_chars: 50000 # characters of filing text per call
