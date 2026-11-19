@@ -5,7 +5,8 @@ Last updated 2026-11-19.
 ## What it is
 A simple MCP server, written in Python with FastMCP, that brings SEC EDGAR financial
 filings into Claude and other MCP clients. It lives on my machine at `Desktop\edgar-mcp`
-and runs locally over stdio. Claude Code starts it through the project's `.mcp.json`.
+and runs locally over stdio. The code is in a private GitHub repository,
+`ccleader477/edgar-mcp`. Claude Code starts it through the project's `.mcp.json`.
 
 It needs no Anthropic API key. It only needs `SEC_USER_AGENT` (a name and email, which
 SEC requires) in a local `.env` file that git ignores.
@@ -67,8 +68,7 @@ scripts/        fetch_fixtures.py
 2. Phase 7:
    - Write 10–15 hand-verified eval questions (`evals/questions.yaml`), run through the MCP tools directly.
    - Write a README with setup steps, the tool list, the permission model and the validation checks.
-3. Put the code in git and on GitHub. Nothing is committed yet.
-4. Optional Phase 8: run it as a remote connector over HTTP with OAuth.
+3. Optional Phase 8: run it as a remote connector over HTTP with OAuth.
 
 ## Commands
 Run these from `edgar-mcp`. `uv` isn't on PATH, so it's run as `python -m uv`.
